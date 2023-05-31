@@ -70,14 +70,28 @@ public class SearchLinkedList {
         
         while(currentNode != null){
             if(count == index){
-                System.out.println(currentNode.data + " found at index " + count);
+                System.out.println("Element at index " + count + " is " + currentNode.data);
             }
             currentNode = currentNode.next;
             count++;
-        }
-        
+        }        
     }
 
+    //find node using recursion
+    public int recursionSearch(Node head, int index){
+        
+        int count = 0; 
+        
+        if(head == null){
+            return -1;            
+        }
+        
+        if(count == index){
+            return head.data;
+        }
+                
+        return recursionSearch(head.next, index-1);
+    }
 
     public static void main(String[] args) {
         
@@ -92,7 +106,8 @@ public class SearchLinkedList {
 
         list.display();
         
-        list.searchNode(-1);
+        list.searchNode(1);
+        System.out.println(list.recursionSearch(list.head, 1));
         
     }
     
